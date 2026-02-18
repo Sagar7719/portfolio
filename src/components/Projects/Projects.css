@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.section {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 70px 60px;
+  margin: 80px auto;
+  max-width: 1200px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.projects-section {
+  min-height: 100svh;
+  padding: 50px 20px;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+}
+
+.projects-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ffb347;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  width: 300px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.project-card h3 {
+  color: #ffb347;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.project-card p {
+  flex: 1;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.tech-item {
+  background: rgba(255, 179, 71, 0.2);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.project-btn {
+  background: #ffb347;
+  color: #000;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.project-btn:hover {
+  background: #ff7e5f;
+  color: #fff;
+}
+
+ 
+@media (max-width: 768px) {
+  .projects-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-card {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-title {
+    font-size: 2rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.2rem;
+  }
+}

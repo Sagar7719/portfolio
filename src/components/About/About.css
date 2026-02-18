@@ -1,0 +1,180 @@
+.about-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Title */
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+/* Text */
+.about-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 18px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.highlight {
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+/* Resume Button */
+.resume-wrapper {
+  text-align: center;
+  margin: 35px 0;
+}
+
+.resume-btn {
+  padding: 12px 30px;
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  transform: scale(1.05);
+  background: #084298;
+}
+
+/* Cards */
+.about-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 60px;
+}
+
+.about-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.about-icon {
+  font-size: 28px;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+/* Education */
+.education {
+  margin-top: 80px;
+}
+
+.edu-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #0d6efd;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  background: #0d6efd;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-content {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 26px;
+  }
+
+  .about-text {
+    font-size: 15px;
+  }
+
+  .timeline::before {
+    left: 8px;
+  }
+
+  .timeline-dot {
+    left: 8px;
+  }
+
+  .timeline-content {
+    width: calc(100% - 30px);
+    margin-left: 30px;
+    text-align: left;
+  }
+}
+
+/* Dark Mode Ready */
+body.dark .about-section {
+  background: linear-gradient(135deg, #0f172a, #020617);
+}
+
+body.dark .about-text,
+body.dark .about-card p,
+body.dark .timeline-content p {
+  color: #cbd5f5;
+}
+
+body.dark .section-title,
+body.dark .about-card h3,
+body.dark .edu-title {
+  color: #ffffff;
+}
+
+body.dark .about-card,
+body.dark .timeline-content {
+  background: #020617;
+}
