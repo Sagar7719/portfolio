@@ -14,15 +14,21 @@ const projectsData = [
     tech: ['React.js', 'CSS', 'JavaScript', 'Bootstrap 5'],
     link: 'https://github.com/Sagar7719',
   },
+  {
+    title: 'Ranku1 (EdTech Platform)',
+    description: 'A dual-dashboard EdTech platform featuring an Admin panel for test creation and a User portal for taking exams. Built with robust Role-Based Access Control.',
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+    link: 'https://github.com/Sagar7719',
+  },
 ];
 
 const Projects = () => {
   return (
      <section id='projects' className="projects-section">
-      <h2 className="projects-title">My Projects</h2>
+      <h2 className="projects-title" data-aos="fade-up">My Projects</h2>
       <div className="projects-container">
         {projectsData.map((project, index) => (
-          <div key={index} className="project-card">
+          <div key={index} className="project-card" data-aos="fade-up" data-aos-delay={index * 150}>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
             <div className="tech-stack">

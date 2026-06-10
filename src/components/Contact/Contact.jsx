@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Contact.css";
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaGithub, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,24 +8,48 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Thank you, ${formData.name}! Your message has been sent.`);
-    setFormData({ name: "", email: "", message: "" });
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setErrorMessage(data.message || "Failed to send message.");
+      }
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage("Network error. Is the backend running?");
+    }
   };
 
   return (
     <section id="contact" className="contact-section">
-      <h2 className="contact-title">Contact Me</h2>
+      <h2 className="contact-title" data-aos="fade-up">Contact Me</h2>
 
       <div className="contact-container">
          
-        <div className="contact-info">
+        <div className="contact-info" data-aos="fade-right">
           <h3>Sagar Ulagadde</h3>
 
           <p>
@@ -39,7 +63,7 @@ const Contact = () => {
             Phone: <a href="tel:+918669301878">+91 8669301878</a>
           </p>
 
-          <p>Location: Pune, Nareh, Near Sinhgad College of Pharmacy</p>
+          <p>Location: Pune, Nareh </p>
 
            
           <div className="social-icons">
@@ -66,7 +90,7 @@ const Contact = () => {
         </div>
 
         
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form glass-panel" onSubmit={handleSubmit} data-aos="fade-left">
           <input
             type="text"
             name="name"
@@ -74,6 +98,7 @@ const Contact = () => {
             value={formData.name}
             onChange={handleChange}
             required
+            disabled={status === "loading"}
           />
 
           <input
@@ -83,6 +108,7 @@ const Contact = () => {
             value={formData.email}
             onChange={handleChange}
             required
+            disabled={status === "loading"}
           />
 
           <textarea
@@ -92,9 +118,23 @@ const Contact = () => {
             value={formData.message}
             onChange={handleChange}
             required
+            disabled={status === "loading"}
           />
 
-          <button type="submit">Send Message</button>
+          <button type="submit" disabled={status === "loading"}>
+            {status === "loading" ? "Sending..." : "Send Message"}
+          </button>
+          
+          {status === "success" && (
+            <div className="status-message success">
+              <FaCheckCircle /> Message sent successfully!
+            </div>
+          )}
+          {status === "error" && (
+            <div className="status-message error">
+              <FaExclamationCircle /> {errorMessage}
+            </div>
+          )}
         </form>
       </div>
     </section>

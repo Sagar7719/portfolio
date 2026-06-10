@@ -1,6 +1,6 @@
 .about-section {
   padding: 100px 20px;
-  background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
+  background: var(--bg-primary);
 }
 
 .container {
@@ -13,6 +13,7 @@
   text-align: center;
   font-size: 36px;
   margin-bottom: 25px;
+  color: var(--text-primary);
 }
 
 /* Text */
@@ -22,11 +23,11 @@
   margin: 0 auto 18px;
   font-size: 16px;
   line-height: 1.8;
-  color: #444;
+  color: var(--text-secondary);
 }
 
 .highlight {
-  color: #0d6efd;
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -38,17 +39,19 @@
 
 .resume-btn {
   padding: 12px 30px;
-  background: #0d6efd;
+  background: var(--accent);
   color: #fff;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
+  box-shadow: var(--card-shadow);
 }
 
 .resume-btn:hover {
   transform: scale(1.05);
-  background: #084298;
+  background: var(--accent-hover);
+  box-shadow: var(--card-shadow-hover);
 }
 
 /* Cards */
@@ -60,23 +63,40 @@
 }
 
 .about-card {
-  background: #fff;
+  background: var(--card-bg);
   padding: 25px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
   transition: all 0.3s ease;
 }
 
 .about-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--accent);
+}
+
+.about-card h3 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.about-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
 }
 
 .about-icon {
-  font-size: 28px;
-  color: #0d6efd;
-  margin-bottom: 10px;
+  font-size: 36px;
+  color: var(--accent);
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover .about-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 /* Education */
@@ -88,6 +108,7 @@
   text-align: center;
   font-size: 28px;
   margin-bottom: 40px;
+  color: var(--text-primary);
 }
 
 .timeline {
@@ -103,7 +124,7 @@
   top: 0;
   width: 2px;
   height: 100%;
-  background: #0d6efd;
+  background: var(--accent);
   transform: translateX(-50%);
 }
 
@@ -115,21 +136,49 @@
 .timeline-dot {
   width: 14px;
   height: 14px;
-  background: #0d6efd;
+  background: var(--accent);
   border-radius: 50%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  box-shadow: 0 0 10px var(--accent);
 }
 
 .timeline-content {
-  background: #fff;
+  background: var(--card-bg);
   padding: 18px;
   border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
   width: 90%;
   margin: auto;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.timeline-content h4 {
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.timeline-content p {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.timeline-content span {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--bg-secondary);
+  color: var(--accent);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 /* Mobile */
@@ -157,24 +206,3 @@
   }
 }
 
-/* Dark Mode Ready */
-body.dark .about-section {
-  background: linear-gradient(135deg, #0f172a, #020617);
-}
-
-body.dark .about-text,
-body.dark .about-card p,
-body.dark .timeline-content p {
-  color: #cbd5f5;
-}
-
-body.dark .section-title,
-body.dark .about-card h3,
-body.dark .edu-title {
-  color: #ffffff;
-}
-
-body.dark .about-card,
-body.dark .timeline-content {
-  background: #020617;
-}

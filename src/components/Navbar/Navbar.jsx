@@ -1,11 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
+import { FaMoon, FaSun } from "react-icons/fa";
 import "./Navbar.css";
 
 
 
 const Navbar = () => {
+  const [theme, setTheme] = useState("light");
+
   useEffect(() => {
+    // Check local storage for theme preference
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.body.setAttribute("data-theme", savedTheme);
+    }
+
     const navbar = document.getElementById("navbar");
 
     const handleScroll = () => {
@@ -19,6 +29,13 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.body.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
 
   return (
     <nav id="navbar" className="navbar navbar-expand-lg fixed-top navbar-light">
@@ -58,11 +75,20 @@ const Navbar = () => {
 
               </li>
             ))}
-          </ul>
+              <li className="nav-item d-flex align-items-center ms-lg-3">
+                <button
+                  onClick={toggleTheme}
+                  className="theme-toggle-btn"
+                  aria-label="Toggle Theme"
+                >
+                  {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  );
+      </nav>
+    );
 };
 
 export default Navbar;

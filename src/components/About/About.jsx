@@ -32,8 +32,8 @@ const About = () => {
         {/* Resume Button */}
         <div className="resume-wrapper" data-aos="zoom-in">
           <a
-            href="/Sagar-Ulagadde-CV.pdf"
-            download
+            href="/Sagar Software Engineer.pdf"
+            download="Sagar-Ulagadde-CV.pdf"
             className="resume-btn"
           >
             Download Resume

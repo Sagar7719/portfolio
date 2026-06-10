@@ -29,10 +29,10 @@ const Skills = () => {
 
   return (
     <section id='skills' className="skills-section">
-      <h2 className="skills-title">My Skills</h2>
+      <h2 className="skills-title" data-aos="fade-up">My Skills</h2>
       <div className="skills-container">
         {skillsData.map((skill, index) => (
-          <div key={index} className="skill-card">
+          <div key={index} className="skill-card" data-aos="zoom-in" data-aos-delay={index * 100}>
             <h3>{skill.name}</h3>
             <div className="skill-bar">
               <div

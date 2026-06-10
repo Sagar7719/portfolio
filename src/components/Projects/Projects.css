@@ -6,19 +6,20 @@
 }
 
 .section {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 70px 60px;
   margin: 80px auto;
   max-width: 1200px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
 }
 
 .projects-section {
   min-height: 100svh;
   padding: 50px 20px;
-  background: linear-gradient(to right, #2c3e50, #4ca1af);
-  color: #fff;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +37,7 @@
   display: block;
   width: 60px;
   height: 4px;
-  background: #ffb347;
+  background: var(--accent);
   margin: 10px auto 0;
   border-radius: 2px;
 }
@@ -51,7 +52,7 @@
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
   padding: 25px;
   border-radius: 15px;
   width: 300px;
@@ -59,15 +60,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
 }
 
 .project-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--accent);
 }
 
 .project-card h3 {
-  color: #ffb347;
+  color: var(--text-primary);
   margin-bottom: 15px;
   text-align: center;
 }
@@ -76,6 +80,7 @@
   flex: 1;
   margin-bottom: 15px;
   text-align: justify;
+  color: var(--text-secondary);
 }
 
 .tech-stack {
@@ -87,16 +92,17 @@
 }
 
 .tech-item {
-  background: rgba(255, 179, 71, 0.2);
-  color: #fff;
+  background: var(--bg-secondary);
+  color: var(--accent);
+  border: 1px solid var(--card-border);
   padding: 5px 10px;
   border-radius: 12px;
   font-size: 0.85rem;
 }
 
 .project-btn {
-  background: #ffb347;
-  color: #000;
+  background: var(--accent);
+  color: #fff;
   text-align: center;
   padding: 10px;
   border-radius: 10px;
@@ -106,7 +112,7 @@
 }
 
 .project-btn:hover {
-  background: #ff7e5f;
+  background: var(--accent-hover);
   color: #fff;
 }
 

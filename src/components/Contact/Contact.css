@@ -1,16 +1,11 @@
  
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+
 
 .contact-section {
   min-height: 100svh;
   padding: 60px 20px;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +22,7 @@
   content: "";
   width: 60px;
   height: 4px;
-  background: #ff4d5a;
+  background: var(--accent);
   display: block;
   margin: 10px auto 0;
   border-radius: 2px;
@@ -36,30 +31,38 @@
  
 .contact-container {
   display: flex;
-  gap: 40px;
-  max-width: 1100px;
+  gap: 60px;
+  max-width: 1000px;
   width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
  
 .contact-info {
-  flex: 1;
-  min-width: 280px;
+  flex: 1 1 300px;
+  max-width: 450px;
 }
 
 .contact-info h3 {
   font-size: 1.8rem;
   margin-bottom: 15px;
-  color: #ff4d5a;
+  color: var(--text-primary);
 }
 
 .contact-info p {
   margin-bottom: 10px;
 }
 
-.contact-info a {
-  color: #ffb347;
+.contact-info a:not(.icon) {
+  color: var(--accent);
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.contact-info a:not(.icon):hover {
+  color: var(--accent-hover);
 }
 
  
@@ -82,11 +85,23 @@
 }
 
 .icon.linkedin {
-  background: #0a66c2;
+  background: #0077b5;
 }
 
 .icon.github {
-  background: #171515;
+  background: #333;
+}
+
+[data-theme="dark"] .icon.linkedin {
+  background: #1e293b;
+  border: 1px solid var(--card-border);
+  color: #3b82f6;
+}
+
+[data-theme="dark"] .icon.github {
+  background: #1e293b;
+  border: 1px solid var(--card-border);
+  color: #f8fafc;
 }
 
 .icon:hover {
@@ -96,8 +111,8 @@
 
  
 .contact-form {
-  flex: 1;
-  min-width: 280px;
+  flex: 1 1 300px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -107,13 +122,22 @@
 .contact-form textarea {
   padding: 12px 15px;
   border-radius: 10px;
-  border: none;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-primary);
   font-size: 1rem;
   outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .contact-form button {
-  background: #ff4d5a;
+  background: var(--accent);
   color: #fff;
   padding: 12px;
   font-size: 1rem;
@@ -121,17 +145,83 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: var(--card-shadow);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 .contact-form button:hover {
-  background: #ff7e5f;
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.contact-form button:active {
+  transform: translateY(0);
+}
+
+.contact-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Glassmorphism Effect */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .glass-panel {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Status Messages */
+.status-message {
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.status-message.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-message.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
  
 @media (max-width: 768px) {
   .contact-container {
     flex-direction: column;
+    align-items: center;
+  }
+  .contact-info,
+  .contact-form {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
